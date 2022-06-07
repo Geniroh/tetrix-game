@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const main = document.querySelector("#main");
   const miniGrid = document.querySelector(".mini-grid");
   const colors = ["orange", "red", "purple", "green", "lightseagreen"];
+  const miniBtnUp = document.querySelector("#miniBtnUp");
+  const miniBtnDown = document.querySelector("#miniBtnDown");
+  const miniBtnLeft = document.querySelector("#miniBtnLeft");
+  const miniBtnRight = document.querySelector("#miniBtnRight");
 
   //Adding tetramino squares dynamically
   for (let i = 0; i < 200; i++) {
@@ -109,6 +113,20 @@ document.addEventListener("DOMContentLoaded", () => {
       moveDown();
     }
   }
+
+  //assign functions to mini control buttons
+  miniBtnUp.addEventListener("click", () => {
+    rotate();
+  });
+  miniBtnDown.addEventListener("click", () => {
+    moveDown();
+  });
+  miniBtnRight.addEventListener("click", () => {
+    moveRight();
+  });
+  miniBtnLeft.addEventListener("click", () => {
+    moveLeft();
+  });
 
   document.addEventListener("keyup", control);
 
@@ -272,6 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
       )
     ) {
       scoreDisplay.innerHTML = "end";
+      play("./game-over.wav");
       clearInterval(timerId);
     }
   }
